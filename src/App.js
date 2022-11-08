@@ -26,11 +26,20 @@ function App() {
       locationOfExpenditure: "Chandigarh",
     },
   ];
+
   return (
     <div>
       <h2>Let's get started!</h2>
+      {expenses.map((item) => (
+        <ExpenseItem title = {item.title}
+        amount = {item.amount}
+        date = {item.date}
+        locationOfExpenditure = {item.locationOfExpenditure}></ExpenseItem>
+      )
+      
+      )}
 
-        <ExpenseItem 
+        {/* <ExpenseItem 
         title={expenses[0].title}
         amount={expenses[0].amount}
         date={expenses[0].date}
@@ -54,7 +63,7 @@ function App() {
         amount={expenses[3].amount}
         date={expenses[3].date}
         locationOfExpenditure={expenses[3].locationOfExpenditure}
-    ></ExpenseItem> 
+    ></ExpenseItem>  */}
     </div>
   );
 }
