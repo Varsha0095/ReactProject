@@ -5,22 +5,33 @@ import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
-  const [amount, setAmount] = useState(props.amount);
-  console.log('Evaluation by React')
-  const clickHandler = () => {
-    setAmount('100')
-    console.log(amount);
-  };
+  // const [amount, setAmount] = useState(props.amount);
+  // console.log('Evaluation by React')
+  // const clickHandler = () => {
+  //   setAmount('100')
+  //   console.log(amount);
+  // };
+  const removeExpense = () => {
+    console.log(props.id);
+
+    const ele = document.getElementById(props.id)
+    // while(ele.length > 0){
+      ele.parentNode.removeChild(ele)
+    // }
+    
+  }
+  
   return (
-    <Card className="expense-item">
+    <Card className="expense-item" id={props.id}>
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
         <h2>{props.title}</h2>
         <div className="expense-item__description"></div>
         <h2>{props.locationOfExpenditure}</h2>
-        <div className="expense-item__price">${amount}</div>
+        <div className="expense-item__price">${props.amount}</div>
       </div>
-      <button onClick={clickHandler}>Change Amount</button>
+      <button onClick={removeExpense}>Delete</button>
+
     </Card>
   );
 };
