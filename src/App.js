@@ -34,11 +34,16 @@ const App = () => {
     },
   ];
 
+  // const addExpenseHandler = (expense) => {
+  //   console.log('In App.js');
+  //   console.log(expense);   //confirming if the data has arrived
+  // }
+
   return (
     <div>
       <NewExpense />
       <Expenses items={expenses} />
-      
+
     </div>
   );
 };
