@@ -12,15 +12,21 @@ const Expenses = (props) => {
     // console.log('Expense.js');
     // console.log(selectedYear);
   };
+
+  const filteredExpenses = props.items.filter((expense) => {
+    //using filter method on the array of items which is props.items
+
+    return expense.date.getFullYear().toString() === filteredYear; //converting the dateObject to string which is used by the expense and checking if it is same as the filteredYear
+  }); //this expression will return true if the expense and filter has same year (and store those items in the new array filteredExpenses) otherwise false
   return (
     <div>
-      <ExpensesFilter
-        selected={filteredYear}
-        onChangeFilter={filterChangeHandler}
-      />
-
       <Card className="expenses">
-        {props.items.map((expense) => (
+        <ExpensesFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+        />
+
+        {filteredExpenses.map((expense) => (         //using map method on the new array of filtered items to render those particular items as a list
           <ExpenseItem
             title={expense.title}
             key={expense.id}
@@ -28,34 +34,6 @@ const Expenses = (props) => {
             date={expense.date}
           />
         ))}
-        {/* <ExpenseItem
-          title={props.items[0].title}
-          amount={props.items[0].amount}
-          date={props.items[0].date}
-          locationOfExpenditure={props.items[0].locationOfExpenditure}
-          id={props.items[0].id}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={props.items[1].title}
-          amount={props.items[1].amount}
-          date={props.items[1].date}
-          locationOfExpenditure={props.items[1].locationOfExpenditure}
-          id={props.items[1].id}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={props.items[2].title}
-          amount={props.items[2].amount}
-          date={props.items[2].date}
-          locationOfExpenditure={props.items[2].locationOfExpenditure}
-          id={props.items[2].id}
-        ></ExpenseItem>
-        <ExpenseItem
-          title={props.items[3].title}
-          amount={props.items[3].amount}
-          date={props.items[3].date}
-          locationOfExpenditure={props.items[3].locationOfExpenditure}
-          id={props.items[3].id}
-        ></ExpenseItem> */}
       </Card>
     </div>
   );
