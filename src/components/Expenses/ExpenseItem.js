@@ -15,6 +15,7 @@ const ExpenseItem = (props) => {
     console.log(props.id);
 
     const ele = document.getElementById(props.id)
+    console.log(props.id, ele);
       ele.parentNode.removeChild(ele)
   
     
